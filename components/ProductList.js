@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { Card, Button, ResourceList, Stack, TextStyle, Thumbnail } from '@shopify/polaris';
+import { Card, Button, ResourceList, Stack, Thumbnail } from '@shopify/polaris';
 import store from 'store-js';
 
 const GET_PRODUCTS_BY_ID = gql`
@@ -67,9 +67,9 @@ function ProductList() {
                 <Stack>
                   <Stack.Item fill>
                     <h3>
-                      <TextStyle variation='strong'>
+                      <strong>
                         {item.title}
-                      </TextStyle>
+                      </strong>
                     </h3>
                   </Stack.Item>
                   <Stack.Item>

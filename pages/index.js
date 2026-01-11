@@ -6,13 +6,9 @@ import {
   Banner, 
   Button, 
   ProgressBar,
-  Text,
-  TextStyle,
   Stack,
   Select,
-  ColorPicker,
-  TextField,
-  Divider
+  TextField
 } from '@shopify/polaris';
 import { TitleBar } from '@shopify/app-bridge-react';
 import Cookies from 'js-cookie';
@@ -94,7 +90,7 @@ function Index() {
         <Layout>
           <Layout.Section>
             <Card sectioned>
-              <Text>Loading...</Text>
+              <span>Loading...</span>
             </Card>
           </Layout.Section>
         </Layout>
@@ -129,9 +125,9 @@ function Index() {
         <Layout.Section>
           <Card sectioned>
             <Stack vertical spacing="loose">
-              <Text variant="headingXl" as="h1">
+              <h1 style={{ fontSize: '28px', fontWeight: '600', marginBottom: '16px' }}>
                 Your urgency engine is running…
-              </Text>
+              </h1>
               
               {isLocked ? (
                 <Banner status="critical" title="Free plan limit reached">
@@ -145,17 +141,17 @@ function Index() {
               ) : (
                 <Banner status="info">
                   <Stack vertical spacing="tight">
-                    <Text variant="headingMd" as="h2">
+                    <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '8px' }}>
                       Views Used: {viewsUsed} / {FREE_LIMIT}
-                    </Text>
+                    </h2>
                     <ProgressBar progress={progress} size="large" />
-                    <Text>
+                    <span>
                       {viewsRemaining} views remaining before lock
-                    </Text>
+                    </span>
                     {viewsUntilLock <= 100 && (
-                      <TextStyle variation="strong">
+                      <strong>
                         ⚠️ Only {viewsUntilLock} views left! Activate now to avoid interruption.
-                      </TextStyle>
+                      </strong>
                     )}
                   </Stack>
                 </Banner>
@@ -164,20 +160,24 @@ function Index() {
               {stats?.is_paid && (
                 <Banner status="success" title="Active Plan">
                   <p>
-                    You're on the <TextStyle variation="strong">{stats.plan_name}</TextStyle> plan. 
+                    You're on the <strong>{stats.plan_name}</strong> plan. 
                     Your timer is active and boosting conversions!
                   </p>
                 </Banner>
               )}
 
-              <Divider />
+              <div style={{ 
+                borderTop: '1px solid #e1e3e5', 
+                marginTop: '24px', 
+                marginBottom: '24px' 
+              }} />
 
-              <Text variant="headingLg" as="h2">
+              <h2 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '8px' }}>
                 Quick Customization
-              </Text>
-              <Text color="subdued">
+              </h2>
+              <span style={{ color: '#6d7175' }}>
                 Customize your timer in 3 clicks or less
-              </Text>
+              </span>
 
               <Stack vertical spacing="tight">
                 <Select
@@ -195,9 +195,9 @@ function Index() {
                 />
 
                 <div>
-                  <Text as="p" variant="bodyMd" color="subdued">
+                  <p style={{ color: '#6d7175', marginBottom: '8px' }}>
                     Timer Color
-                  </Text>
+                  </p>
                   <input
                     type="color"
                     value={settings.timer_color}
@@ -231,18 +231,18 @@ function Index() {
         <Layout.Section secondary>
           <Card sectioned title="How It Works">
             <Stack vertical spacing="tight">
-              <Text>
-                <TextStyle variation="strong">Zero Setup:</TextStyle> The timer automatically appears on all product pages.
-              </Text>
-              <Text>
-                <TextStyle variation="strong">Free Trial:</TextStyle> {FREE_LIMIT} product views to prove value.
-              </Text>
-              <Text>
-                <TextStyle variation="strong">Auto-Lock:</TextStyle> Timer locks after {FREE_LIMIT} views until you activate.
-              </Text>
-              <Text>
-                <TextStyle variation="strong">Conversion Boost:</TextStyle> Creates urgency that increases sales.
-              </Text>
+              <span>
+                <strong>Zero Setup:</strong> The timer automatically appears on all product pages.
+              </span>
+              <span>
+                <strong>Free Trial:</strong> {FREE_LIMIT} product views to prove value.
+              </span>
+              <span>
+                <strong>Auto-Lock:</strong> Timer locks after {FREE_LIMIT} views until you activate.
+              </span>
+              <span>
+                <strong>Conversion Boost:</strong> Creates urgency that increases sales.
+              </span>
             </Stack>
           </Card>
 
@@ -250,16 +250,16 @@ function Index() {
             <Card sectioned title="Plans">
               <Stack vertical spacing="tight">
                 <div>
-                  <TextStyle variation="strong">Starter - $19/mo</TextStyle>
-                  <Text>5,000 views/month</Text>
+                  <strong>Starter - $19/mo</strong>
+                  <span style={{ display: 'block', marginTop: '4px' }}>5,000 views/month</span>
                 </div>
                 <div>
-                  <TextStyle variation="strong">Growth - $49/mo</TextStyle>
-                  <Text>50,000 views/month</Text>
+                  <strong>Growth - $49/mo</strong>
+                  <span style={{ display: 'block', marginTop: '4px' }}>50,000 views/month</span>
                 </div>
                 <div>
-                  <TextStyle variation="strong">Unlimited - $99/mo</TextStyle>
-                  <Text>Unlimited views</Text>
+                  <strong>Unlimited - $99/mo</strong>
+                  <span style={{ display: 'block', marginTop: '4px' }}>Unlimited views</span>
                 </div>
                 <Button primary onClick={handleActivate}>
                   Activate Plan
